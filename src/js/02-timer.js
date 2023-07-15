@@ -29,6 +29,7 @@ const dateTimePicker = document.querySelector('#datetime-picker');
 dateTimePicker.style.marginTop = '40px';
 
 const startBtn = document.querySelector('[data-start]');
+startBtn.disabled = true;
 const daysValue = document.querySelector('[data-days]');
 const hoursValue = document.querySelector('[data-hours]');
 const minutesValue = document.querySelector('[data-minutes]');
@@ -46,7 +47,6 @@ let options = {
 
     if (selectedDate < currentDate) {
       Notiflix.Notify.failure('Будь ласка, виберіть дату у майбутньому');
-      startBtn.disabled = true;
     } else {
       startBtn.disabled = false;
     }
@@ -79,10 +79,11 @@ function updateCountdownUI(days, hours, minutes, seconds) {
 function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
 }
+
 function startCountdown() {
   const selectedDate = new Date(dateTimePicker.value);
   const currentDate = new Date();
-  const timeDifference = selectedDate.getTime() - currentDate.getTime();
+  let timeDifference = selectedDate.getTime() - currentDate.getTime();
 
   if (timeDifference <= 0) {
     clearInterval(countdownInterval);
@@ -102,7 +103,5 @@ function startCountdown() {
     }
   }, 1000);
 }
-
-startBtn.addEventListener('click', startCountdown);
 
 startBtn.addEventListener('click', startCountdown);
