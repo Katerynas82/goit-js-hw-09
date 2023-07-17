@@ -81,30 +81,6 @@ function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
 }
 
-// function startCountdown() {
-//   const selectedDate = new Date(dateTimePicker.value);
-//   const currentDate = new Date();
-//   let timeDifference = selectedDate.getTime() - currentDate.getTime();
-
-//   if (timeDifference <= 0) {
-//     clearInterval(countdownInterval);
-//     updateCountdownUI(0, 0, 0, 0);
-//     Notiflix.Notify.success('Відлік завершено');
-//     return;
-//   }
-
-//   countdownInterval = setInterval(() => {
-//     const { days, hours, minutes, seconds } = convertMs(timeDifference);
-//     updateCountdownUI(days, hours, minutes, seconds);
-//     timeDifference -= 1000;
-
-//     if (timeDifference < 1000) {
-//       clearInterval(countdownInterval);
-//       Notiflix.Notify.success('Відлік завершено');
-//     }
-//   }, 1000);
-// }
-
 function startCountdown() {
   const selectedDate = new Date(dateTimePicker.value);
   const currentDate = new Date();
