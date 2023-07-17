@@ -11,8 +11,8 @@ margin-top: 24px;`;
 const divField = document.querySelectorAll('.field');
 divField.forEach(element => {
   element.style.cssText = `
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
     justify-content: center;
     flex-direction: column;`;
 });
@@ -20,7 +20,7 @@ divField.forEach(element => {
 const spanValue = document.querySelectorAll('.value');
 spanValue.forEach(element => {
   element.style.cssText = `
-  font-size: 78px; 
+  font-size: 78px;
   color: blue;`;
 });
 
@@ -47,6 +47,7 @@ let options = {
 
     if (selectedDate < currentDate) {
       Notiflix.Notify.failure('Будь ласка, виберіть дату у майбутньому');
+      startBtn.disabled = true;
     } else {
       startBtn.disabled = false;
     }
@@ -80,6 +81,30 @@ function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
 }
 
+// function startCountdown() {
+//   const selectedDate = new Date(dateTimePicker.value);
+//   const currentDate = new Date();
+//   let timeDifference = selectedDate.getTime() - currentDate.getTime();
+
+//   if (timeDifference <= 0) {
+//     clearInterval(countdownInterval);
+//     updateCountdownUI(0, 0, 0, 0);
+//     Notiflix.Notify.success('Відлік завершено');
+//     return;
+//   }
+
+//   countdownInterval = setInterval(() => {
+//     const { days, hours, minutes, seconds } = convertMs(timeDifference);
+//     updateCountdownUI(days, hours, minutes, seconds);
+//     timeDifference -= 1000;
+
+//     if (timeDifference < 1000) {
+//       clearInterval(countdownInterval);
+//       Notiflix.Notify.success('Відлік завершено');
+//     }
+//   }, 1000);
+// }
+
 function startCountdown() {
   const selectedDate = new Date(dateTimePicker.value);
   const currentDate = new Date();
@@ -97,11 +122,10 @@ function startCountdown() {
     updateCountdownUI(days, hours, minutes, seconds);
     timeDifference -= 1000;
 
-    if (timeDifference < 1000) {
+    if (timeDifference < 1) {
       clearInterval(countdownInterval);
       Notiflix.Notify.success('Відлік завершено');
     }
   }, 1000);
 }
-
 startBtn.addEventListener('click', startCountdown);
