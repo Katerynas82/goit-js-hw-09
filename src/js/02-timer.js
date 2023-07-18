@@ -104,4 +104,7 @@ function startCountdown() {
     }
   }, 1000);
 }
-startBtn.addEventListener('click', startCountdown);
+startBtn.addEventListener('click', function () {
+  startCountdown();
+  startBtn.disabled = true;
+});
