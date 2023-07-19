@@ -26,7 +26,7 @@ spanValue.forEach(element => {
 
 const dateTimePicker = document.querySelector('#datetime-picker');
 
-dateTimePicker.style.marginTop = '40px';
+dateTimePicker.style.marginTop = '41px';
 
 const startBtn = document.querySelector('[data-start]');
 startBtn.disabled = true;
